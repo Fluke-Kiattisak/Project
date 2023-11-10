@@ -3,74 +3,103 @@
 
 <head>
     <title>Crypto Prediction Website</title>
-    <link rel="stylesheet" type="text/css" href="Style.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    
 </head>
 
-<body>
-    <div class="header">
-        <h1>Welcome to CryptoPredictions</h1>
-    </div>
+<body class="bg-light">
+    <div class="container">
+        <div class="text-center my-4">
+            <h1>Welcome to CryptoPredictions</h1>
+        </div>
 
-    <div class="content">
-        <header>
-            <nav>
-                <div class="logo">
-                    <img src="logo.png" alt="CryptoPredictions Logo">
-                </div>
-                <ul>
-                    <li style="display: inline-block; margin-right: 15px;"><a href="Front-end.html">Home</a></li>
-                        <li style="display: inline-block; margin-right: 15px;"><a href="Predictions.html">Predictions</a></li>
-                        <li style="display: inline-block; margin-right: 15px;"><a href="chart.html">Charts</a></li>
-                        <li style="display: inline-block; margin-right: 15px;"><a href="about.html">About</a></li>
-                        <li style="display: inline-block;"><a href="contact.html">Contact</a></li>
+        <nav class="navbar navbar-expand-lg navbar-light bg-white rounded mb-4 p-3 shadow">
+            <img src="logo.png" alt="CryptoPredictions Logo" style="width: 100px;">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="Front-end.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="Predictions.html">Predictions</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="Get-Start.html" style="color: #000;">Current coin value</a>
+                    </li>
+                    
+                    <li class="nav-item">
+                        <a class="nav-link" href="about.html">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="contact.html">Contact</a>
+                    </li>
+                    <li class="nav-item ml-3">
+                        <input type="text" placeholder="Search..." class="form-control">
+                    </li>
+                    <li class="nav-item ml-2">
+                        <button class="btn btn-primary">Search</button>
+                    </li>
                 </ul>
-                <div class="search-box">
-                    <input type="text" placeholder="Search...">
-                    <button>Search</button>
-                </div>
-            </nav>
-        </header>
-        
-        <section class="crypto-container">
-            <h2>Current Cryptocurrency Prices</h2>  <br>
-
-            <div class="crypto-box" id="bitcoin-box">
-                <img src="https://cryptologos.cc/logos/bitcoin-btc-logo.png" alt="Bitcoin Logo" class="crypto-logo">
-                <div class="crypto-name">Bitcoin</div>
-                <div class="crypto-price" id="bitcoin-price">Loading...</div>
             </div>
+        </nav>
 
-            <div class="crypto-box" id="ethereum-box">
-                <img src="https://cryptologos.cc/logos/ethereum-eth-logo.png" alt="Ethereum Logo" class="crypto-logo">
-                <div class="crypto-name">Ethereum</div>
-                <div class="crypto-price" id="ethereum-price">Loading...</div>
-            </div>
-            
+        <section>
+            <h2 class="mb-4">Current Cryptocurrency Prices</h2>
+            <div id="cryptoList"></div>
         </section>
 
-        <footer>
+        <footer class="text-center mt-5 py-4">
             <p>&copy; 2023 CryptoPredictions. All rights reserved.</p>
         </footer>
     </div>
-    <section class="about">
-        <div class="about-content">
-            <h2>About CryptoPredictions</h2>
-            <p>CryptoPredictions is a leading platform for accurate cryptocurrency price predictions. Our team of experts analyzes market trends, historical data, and technical indicators to provide reliable predictions for various cryptocurrencies.</p>
-            <a href="#" class="btn">Learn More</a>
-        </div>
-    </section>
 
     <script>
+        let cryptoData = [];
+
+        function getChangeColor(percentage) {
+            return percentage < 0 ? 'text-danger' : 'text-success';
+        }
+
+        function renderCryptos(data) {
+            const container = document.querySelector('#cryptoList');
+            container.innerHTML = "";
+            data.forEach(crypto => {
+                container.innerHTML += `
+                    <div class="card mb-3 shadow-sm">
+                        <div class="card-body">
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div>
+                                    <img src="${crypto.image}" alt="${crypto.name} Logo" style="width: 40px; height: 40px;">
+                                    <strong class="ml-2">${crypto.name}</strong>
+                                </div>
+                                <div>
+                                    <span class="badge badge-primary">${crypto.current_price.toFixed(2)} USD</span>
+                                </div>
+                            </div>
+                            <hr>
+                            <div class="d-flex justify-content-between">
+                                <span>1hr: <span class="${getChangeColor(crypto.price_change_percentage_1h_in_currency)}">${crypto.price_change_percentage_1h_in_currency.toFixed(2)}%</span></span>
+                                <span>24hr: <span class="${getChangeColor(crypto.price_change_percentage_24h)}">${crypto.price_change_percentage_24h.toFixed(2)}%</span></span>
+                                <span>7day: <span class="${getChangeColor(crypto.price_change_percentage_7d_in_currency)}">${crypto.price_change_percentage_7d_in_currency.toFixed(2)}%</span></span>
+                                <span>Market Cap: ${crypto.market_cap.toLocaleString()} USD</span>
+                                <span>Volume: ${crypto.total_volume.toLocaleString()} USD</span>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            });
+        }
+
         function fetchCryptoPrices() {
             $.ajax({
-                url: "https://api.coingecko.com/api/v3/simple/price?ids=bitcoin,ethereum&vs_currencies=usd",
+                url: "https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&limit=100&sparkline=false&price_change_percentage=1h%2C24h%2C7d",
                 method: "GET",
                 success: function(data) {
-                    $('#bitcoin-price').text(`$${data.bitcoin.usd}`);
-                    $('#ethereum-price').text(`$${data.ethereum.usd}`);
+                    cryptoData = data;
+                    renderCryptos(data);
                 },
                 error: function(error) {
                     console.log("Error fetching crypto prices:", error);
@@ -78,9 +107,16 @@
             });
         }
 
-        $(document).ready(function() {
-            fetchCryptoPrices(); // Fetch prices when page loads
-            setInterval(fetchCryptoPrices, 10000); // Refresh every 60 seconds
+        document.addEventListener('DOMContentLoaded', function() {
+            fetchCryptoPrices();
+            setInterval(fetchCryptoPrices, 5000);
+
+            const searchButton = document.querySelector('.btn-primary');
+            searchButton.addEventListener('click', function() {
+                const searchTerm = document.querySelector('.form-control').value.toLowerCase();
+                const filteredData = cryptoData.filter(crypto => crypto.name.toLowerCase().includes(searchTerm));
+                renderCryptos(filteredData);
+            });
         });
     </script>
 </body>
