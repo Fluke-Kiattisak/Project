@@ -1,53 +1,110 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About CryptoPredictions</title>
-    <link rel="stylesheet" type="text/css" href="Style.css">
+    <title>Crypto Prediction Website</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 
-<body
-    style="background-color: #f4f4f6; color: #333; font-size: 18px; line-height: 1.6; margin: 0; padding: 0; font-family: 'Arial', sans-serif;">
+<body class="bg-light">
 
-    <header class="site-header"
-        style="background-color: #333; color: #fff; padding: 20px 0; text-align: center; font-size: 24px;">
-        <h1>Welcome to CryptoPredictions</h1>
-    </header>
+    
 
-    <nav>
-        <div class="logo" style="text-align: center;">
-            <img src="logo.png" alt="CryptoPredictions Logo">
+<div class="content" style="margin-right: 10px">
+    <div class="container">
+        <div class="text-center my-4">
+            <h1>Welcome to CryptoPredictions</h1>
         </div>
-        <ul style="margin-left: 140px; text-align: center;">
-            <li style="display: inline-block; margin-right: 15px;"><a href="Front-end.html">Home</a></li>
-            <li style="display: inline-block; margin-right: 15px;"><a href="Predictions.html">Predictions</a></li>
-            <li style="display: inline-block; margin-right: 15px;"><a href="chart.html">Charts</a></li>
-            <li style="display: inline-block; margin-right: 15px;"><a href="about.html">About</a></li>
-            <li style="display: inline-block;"><a href="contact.html">Contact</a></li>
-        </ul>
-        <div class="search-box" style="text-align: center;">
-            <input type="text" placeholder="Search...">
-            <button>Search</button>
-        </div>
-    </nav>
 
-    <main class="mainn-content"
-        style="max-width: 900px; margin: 50px auto; padding: 40px; background-color: #fff !important; box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1); border-radius: 10px;">
-        <section class="aboutt">
-            <div class="aboutt-content">
-                <p style="text-align: justify; margin-bottom: 30px; font-size: 20px; line-height: 1.8; color: #555;">
-                    This is Mahidol University Student Project about CryptoPredictions.</p>
+        <nav class="navbar navbar-expand-lg navbar-light bg-white rounded mb-4 p-3 shadow">
+            <img src="logo.png" alt="CryptoPredictions Logo" style="width: 100px;">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="Front-end.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="Predictions.html">Predictions</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="Get-Start.html" style="color: #000;">Current coin value</a>
+                    </li>
+                    
+                    <li class="nav-item">
+                        <a class="nav-link" href="about.html">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="contact.html">Contact</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="profile.html">User profile</a>
+                    </li>
+                    <li class="nav-item ml-3">
+                        <input type="text" placeholder="Search..." class="form-control">
+                    </li>
+                    <li class="nav-item ml-2">
+                        <button class="btn btn-primary">Search</button>
+                    </li>
+                    <li class="nav-item ml-2">
+                        <button onclick="openLoginPopup()" class="btn btn-primary" style="background-color: green;">Login</button>
+
+                    </li>
+                </ul>
             </div>
-        </section>
-    </main>
+        </nav>
+        
+        <!-- Login Popup -->
+        <div id="loginPopup" class="login-popup" style="display: none; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); background-color: #f2f2f2; padding: 20px; border-radius: 10px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);">
+            <form method="post" action="/login">
+                <label for="username" style="display: block; margin-bottom: 5px;">Username:</label>
+                <input type="text" id="username" name="username" placeholder="Your username" style="width: 100%; padding: 10px; margin-bottom: 20px; border-radius: 5px; border: 1px solid #ccc;">
+        
+                <label for="password" style="display: block; margin-bottom: 5px;">Password:</label>
+                <input type="password" id="password" name="password" placeholder="Your password" style="width: 100%; padding: 10px; margin-bottom: 20px; border-radius: 5px; border: 1px solid #ccc;">
+        
+                <button type="submit" style="background-color: #4CAF50; color: white; padding: 10px 20px; border: none; border-radius: 5px; cursor: pointer; width: 100%;">Login</button>
+            </form>
+        </div>
+        
+        <!-- Overlay -->
+        <div id="overlay" class="overlay" onclick="closeLoginPopup()" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.5);">
+        </div>
+    
 
-    <footer class="site-footer"
-        style="background-color: #333; color: #fff; padding: 20px 0; text-align: center; position: absolute; width: 100%; bottom: 0;">
-        <p>&copy; 2023 CryptoPredictions. All rights reserved.</p>
-    </footer>
+        <div class="card mb-3 shadow-sm">
+            <div class="card-body">
+                <h2 class="card-title">Why did we make this crypto currency prediction website?</h2>
+                <p class="card-text">This is the MUIC student project. Creating a cryptocurrency prediction website offers a 
+                    unique opportunity to tap into the rapidly growing interest in digital currencies. It serves as a vital 
+                    resource for investors navigating the volatile crypto market, providing data-driven insights and forecasts to inform 
+                    their investment decisions. Such a platform not only educates newcomers about market trends and the underlying technology of 
+                    cryptocurrencies but also showcases sophisticated data analytics and machine learning capabilities. This combination of financial guidance, 
+                    education, and technological innovation makes a cryptocurrency prediction website both a valuable tool for users and a potentially rewarding 
+                    venture for its creators.</p>
+            </div>
+        </div>
+
+        <footer class="text-center mt-5 py-4">
+            <p>&copy; 2023 CryptoPredictions. All rights reserved.</p>
+        </footer>
+    </div>
 </body>
+
+<script>// Functions for showing/hiding login popup
+    function openLoginPopup() {
+        document.getElementById("loginPopup").style.display = "block";
+        document.getElementById("overlay").style.display = "block";
+    }
+
+    function closeLoginPopup() {
+        document.getElementById("loginPopup").style.display = "none";
+        document.getElementById("overlay").style.display = "none";
+    }
+    </script>
 
 </html>
