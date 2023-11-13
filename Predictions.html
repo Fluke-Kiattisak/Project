@@ -79,6 +79,11 @@
         <div class="card mb-3 shadow-sm">
             <div class="card-body">
                 <h2 class="card-title">Coin Prediction</h2>
+                
+                <div id="predictionsContainer" class="card mb-3 shadow-sm">
+                    
+                </div>
+                
                 <p class="card-text">Charts</p>
             </div>
         </div>
@@ -99,6 +104,21 @@
         document.getElementById("loginPopup").style.display = "none";
         document.getElementById("overlay").style.display = "none";
     }
+
+    
+    // Fetch predictions and update the DOM
+    fetch('/api/predictions')
+        .then(response => response.json())
+        .then(data => {
+            const predictionsContainer = document.getElementById('predictionsContainer');
+            data.forEach(prediction => {
+                const predictionElement = document.createElement('div');
+                predictionElement.innerHTML = `Prediction ID: ${prediction.PredictionID}, Predicted Price: ${prediction.PredictedPrice}`;
+                predictionsContainer.appendChild(predictionElement);
+            });
+        })
+        .catch(error => console.error('Error:', error));
+
     </script>
 
 </html>
