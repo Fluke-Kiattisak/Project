@@ -29,7 +29,7 @@
                         <a class="nav-link" href="Front-end.html">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="Predictions.html">Predictions</a>
+                        <a class="nav-link" href="Predictions.php">Predictions</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="Get-Start.html" style="color: #000;">Current coin value</a>
@@ -77,12 +77,36 @@
     
 
         <div class="card mb-3 shadow-sm">
-            <div class="card-body">
-                <h2 class="card-title">Coin Prediction</h2>
-                
-                <div id="predictionsContainer" class="card mb-3 shadow-sm">
-                    
-                </div>
+    <div class="card-body">
+        <h2 class="card-title">Coin Prediction</h2>
+        <p class="card-text">Here are the latest predictions:</p>
+        <div class="table-responsive">
+            
+        
+        <form action="Prediction.php" method="post">
+    <select name="currency" id="currencySelect" onchange="submitForm()" style="width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 4px; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); margin-bottom: 20px;">
+        <option value="">Select a currency</option>
+        <option value="ADA">ADA</option>
+        <option value="BTC">BTC</option>
+        <option value="ETH">ETH</option>
+        <!-- Add other options here if necessary -->
+    </select>
+</form>
+
+<script>
+function submitForm() {
+    var currencySelect = document.getElementById('currencySelect');
+    if (currencySelect.value !== "") {
+        currencySelect.form.submit();
+    }
+}
+</script>
+
+    </tbody>
+</table>
+</div>
+</div>
+</div>
                 
                 <p class="card-text">Charts</p>
             </div>
@@ -108,17 +132,17 @@
     
     // Fetch predictions and update the DOM
     fetch('/api/predictions')
-        .then(response => response.json())
-        .then(data => {
-            const predictionsContainer = document.getElementById('predictionsContainer');
-            data.forEach(prediction => {
-                const predictionElement = document.createElement('div');
-                predictionElement.innerHTML = `Prediction ID: ${prediction.PredictionID}, Predicted Price: ${prediction.PredictedPrice}`;
-                predictionsContainer.appendChild(predictionElement);
-            });
-        })
-        .catch(error => console.error('Error:', error));
+    .then(response => response.json())
+    .then(data => {
+        const predictionsContainer = document.getElementById('predictionsContainer');
+        data.forEach(prediction => {
+            const predictionElement = document.createElement('div');
+            predictionElement.innerHTML = `Prediction ID: ${prediction.PredictionID}, Predicted Price: ${prediction.PredictedPrice}, Actual Price: ${prediction.ActualPrice}`;
+            predictionsContainer.appendChild(predictionElement);
+        });
+    })
+    .catch(error => console.error('Error:', error));
+</script>
 
-    </script>
 
 </html>
