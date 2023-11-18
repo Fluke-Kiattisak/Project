@@ -1,0 +1,105 @@
+\documentclass[a4paper]{article} %Always requireed
+%========================================================================
+% preamble to declare kackges used in the document
+%========================================================================
+%Packages that will be used
+\usepackage{ragged2e}
+\usepackage{tabularx}
+\usepackage{multirow}
+\usepackage[table,xcdraw]{xcolor}
+
+%Define new command used for "tabularx" package
+\newcolumntype{Y}{>{\centering\arraybackslash}X} %Define new column type (Centering with textwidth)
+\renewcommand{\arraystretch}{1.4} %Increase the table height
+%Set up caption formatting/alignment
+\usepackage{caption}
+\captionsetup {	
+	%justification   = centering 
+	justification   = raggedright,
+	singlelinecheck = false
+}
+%\renewcommand{\arraystretch}{1.4}
+%To use a block comment in a document
+\usepackage{comment} 
+\begin{comment}
+	Test a block comment 
+\end{comment}
+%------------------------------------------------------------------------
+\usepackage{fontspec}
+%Either Xelatex or Lualatex is required as a default complier
+%To learn more about "fontspec" package: https://ctan.org/pkg/fontspec?lang=en 
+%========================================================================
+%To declare a document title and an author(s) 
+\title{EGCI491 Computer Engineering Seminar\\ \LaTeX \1em Assignment II}
+\author{
+	\textbf{Piyachon Rusuwannakul} \\
+	\texttt{piyachon.ruu@student.mahidol.edu}
+	\and
+	\textbf{Ryoichi Kaihatsu} \\
+	\texttt{ryoichi.khr@student.mahidol.edu}
+	\and
+	\textbf{Kiattisak Phisithaporn} \\
+	\texttt{kiattisak.pht@student.mahidol.edu}
+}
+
+
+\begin{comment}
+	\author{
+		LastName1, FirstName1\\
+		\texttt{first1.last1@xxxxx.com} 
+		\and
+		LastName2, FirstName2\\
+		\texttt{first2.last2@xxxxx.com}
+		\and
+		LastName3, FirstName3\\
+		\texttt{first3.last3@xxxxx.com}
+		\and
+		LastName4, FirstName4\\
+		\texttt{first4.last4@xxxxx.com}
+	}
+\end{comment}
+%document
+\begin{document}
+	\maketitle
+	%Put your text in a body of your document here... 
+	\section{Timeline}
+	\newcolumntype{L}[1]{>{\raggedright\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
+	\newcolumntype{C}[1]{>{\centering\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
+	\newcolumntype{R}[1]{>{\raggedleft\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}	
+	\begin{table}[!ht]
+		\footnotesize
+		\sloppy
+		\centering
+		\caption{Project Timeline}
+		\label{tab: your-table} %for cross-reference
+		\begin{tabular}{|p{2.15cm}|c|c|c|c|c|c|c|c|c|c|c|c|}
+			\hline
+			\multicolumn{1}{|c|}{}& \multicolumn{12}{c|}{\textbf{Timeline}} \\ \cline{2-13} 
+			\multicolumn{1}{|c|}{}& \multicolumn{9}{c|}{\textbf{2023}} & \multicolumn{3}{c|}{\textbf{2024}} \\ \cline{2-13} 
+			\multicolumn{1}{|c|}{\multirow{-3}{2cm}{\textbf{Plan}}} & \textbf{Apr} & \textbf{May} & \textbf{Jun} & \textbf{Jul} & \textbf{Aug} & \textbf{Sep} & \textbf{Oct} & \textbf{Nov} & \textbf{Dec} & \textbf{Jan} & \textbf{Feb} & \textbf{Mar} \\ \hline
+			1:  Meet with ajarn mingmanus for project title& 
+			\cellcolor[HTML]{000000} & & & & & & & & & & & \\ \hline
+			2: Build API for bots & & 
+			\cellcolor[HTML]{000000} & & & & & & & & & &\\ \hline
+			3: Collect historical data in Cryptocurrency  &  & & 
+			\cellcolor[HTML]{000000} &
+			\cellcolor[HTML]{000000} & & & & & & & & \\ \hline
+			4:  Analyze data collected & & & & & 
+			\cellcolor[HTML]{000000} & & & & & & &\\ \hline
+			5: Build Machine learning model  & & & & & &
+			\cellcolor[HTML]{000000} &
+			\cellcolor[HTML]{000000} &
+			\cellcolor[HTML]{000000} & 
+			\cellcolor[HTML]{000000} & & & \\ \hline
+			6: Tests with the data collected & & &  & & & & & &  
+			\cellcolor[HTML]{000000} & 
+			\cellcolor[HTML]{000000} & &\\ \hline
+			7: Improve the accuracy of the training model & & & & & & & & & & 
+			\cellcolor[HTML]{000000} & 
+			\cellcolor[HTML]{000000} & \\ \hline
+			8: Finalize the project and present it & & & & & & & & & & & & \cellcolor[HTML]{000000} \\ \hline
+		\end{tabular}
+	\end{table}
+	
+\end{document}
+%========================================================================

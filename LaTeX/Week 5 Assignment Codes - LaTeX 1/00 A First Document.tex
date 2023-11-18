@@ -1,0 +1,122 @@
+
+\documentclass[a4paper]{article}
+%========================================================================
+% preamble to declare packages used in the document
+%========================================================================
+% Packages that will be used
+
+% To use a block comment in a document
+\usepackage{comment}
+
+\begin{comment}
+	Test a block comment 
+\end{comment}
+%------------------------------------------------------------------------
+\usepackage{fontspec}
+\usepackage{enumitem}
+\usepackage{pifont}
+\usepackage{amssymb}
+%\usepackage{titlesec}
+\usepackage[margin=1.15in]{geometry}
+\usepackage{graphicx} 
+\usepackage{subcaption}
+\graphicspath{{Figures/}}
+% Either Xelatex or Lualatex is required as a default compiler
+% To learn more about the "fontspec" package: https://ctan.org/pkg/fontspec?lang=en 
+%========================================================================
+% To declare a document title and an author(s) 
+\title{Cryptocurrency trading bot}
+%\author{Piyachon Rusuwannakul}
+\author{
+	Piyachon, Rusuwannakul\\
+	\texttt{piyachon.ruu@student.mahidol.edu}
+	\and
+	Ryoichi, Kaihatsu\\
+	\texttt{ryoichi.khr@student.mahidol.edu} 
+	\and
+	Kiattisak, Phisithaporn\\
+	\texttt{kiattisak.pht@student.mahidol.edu}
+}
+\begin{comment}
+	\author{
+		LastName1, FirstName1\\
+		\texttt{first1.last1@xxxxx.com} 
+		%"\texttt" is used to produce text-mode material in typewriter font within a mathematical expression
+		
+		%To learn more about LaTeX command https://www.dickimaw-books.com/latex/novices/html/symbols.html	
+		
+		\and
+		LastName2, FirstName2\\
+		\texttt{first2.last2@xxxxx.com}
+		\and
+		LastName3, FirstName3\\
+		\texttt{first3.last3@xxxxx.com}
+		\and
+		LastName4, FirstName4\\
+		\texttt{first4.l\add{\alert{\alert{text}}}ast4@xxxxx.com}
+	}
+\end{comment}
+% Define chapter title format to be centered
+\begin{document}
+\maketitle
+\subsection{Introduction}
+The main idea of the project is a cryptocurrency trading bot developed to perform automated trading strategies. Based bot model cryptocurrency bot that have chosen is Kucoin API, this bot will create BUY and SELL orders that is based on the historical trading data that is available. 
+\subsection{Objectives}
+\begin{itemize}
+	\item To let the automated trading bot generate passive income for the user.
+	\item Use pattern recognition to set a take profit and stop loss.
+	\item Connect the API to online cryptocurrency platform, for example, Binance, bitget, KuCoin etc.
+\end{itemize}
+
+\subsection{Scope}
+\begin{itemize}
+	\item[$\blacksquare$] Application Programming Interface (API).
+	\item[$\blacksquare$] Pattern recognition combined with machine learning for decision making from the history of cryptocurrency.
+\end{itemize}
+
+\subsection{Expected Result}
+\begin{itemize}
+	\item[$\blacksquare$] Fully automated trading bot combined with machine learning that helps our bots make decisions.
+	\item[$\blacksquare$] Predict the individual cryptocurrency coin based on historical price. 
+	
+\end{itemize}
+
+\subsection{Timeline}
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=0.9\textwidth, height=3cm]{timeline}
+	\caption{A senior project timeline}
+	\label{fig:timeline}
+\end{figure}
+
+\subsection{subplot}
+\begin{figure}[h]
+	\centering
+	\begin{subfigure}[t]{0.4\textwidth}
+		\includegraphics[width=0.5\linewidth]{A} 
+		\caption{}
+		\label{fig:subplot_A}
+	\end{subfigure}
+	\hfill
+	\begin{subfigure}[t]{0.4\textwidth}
+		\includegraphics[width=0.5\linewidth]{B}
+		\caption{}
+		\label{fig:subplot_B}
+	\end{subfigure}
+	
+	\begin{subfigure}[b]{0.4\textwidth}
+		\includegraphics[width=0.5\linewidth]{C} 
+		\caption{}
+		\label{fig:subplot_C}
+	\end{subfigure}
+	\hfill
+	\begin{subfigure}[b]{0.4\textwidth}
+		\includegraphics[width=0.5\linewidth]{D} 
+		\caption{}
+		\label{fig:subplot_D}
+	\end{subfigure}
+	
+	\caption{\textit{(a) Pic A, (b) Pic B, (c) Pic C, (d) Pic D}}
+	\label{fig:subplot}
+\end{figure}
+\end{document}

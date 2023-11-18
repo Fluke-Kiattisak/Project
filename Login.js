@@ -1,15 +1,22 @@
 const express = require('express');
 const axios = require('axios');
+const crypto = require('crypto');
+const bcrypt = require('bcrypt');
 const app = express();
-
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-app.use(express.MongoClient());
-//const apiKey = ;
-//const apiSecret = ;
-//const apiUrl = ;
+
+
+const uri = 'mongodb/mongodb-community-server:7.0.0-ubi8';
+const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true });
+
+//const apiUrl = '';
+let apiKey;
+let apiSecret;
+
 const timestamp = Date.now();
+const endpoint = 'เดี๋ยวแปะลิ้งค์http';
 const signature = crypto
   .createHmac('sha256', apiSecret)
   .update(timestamp + endpoint + JSON.stringify(requestData))
@@ -34,12 +41,18 @@ app.get('/login', (req, res) => {
   });
 
 app.post('/login', async (req, res) => {
+  apiKey = req.body.apiKey;
+  apiSecret = req.body.apiSecret;
     const username = req.body.username;
     const password = req.body.password;
+    const hashedPassword = await bcrypt.hash(password, 10);
     try {
-      const response = await axios.post('KUcoin_API_URL', {
+      const usersCollection = client.db('Project').collection('usersConnect');
+      await usersCollection.insertOne({
         username,
-        password,
+        password: hashedPassword,
+        apiKey,
+        apiSecret,
       });
       res.redirect('/success');
     } catch (error) {
@@ -58,8 +71,7 @@ app.post('/login', async (req, res) => {
   const { MongoClient } = require('mongodb');
 
   // Replace the connection URL with your MongoDB URL
-  const uri = 'mongodb://localhost:27017/your-database-name';
-  const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true });
+
   
   async function connectToDatabase() {
     try {

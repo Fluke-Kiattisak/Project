@@ -1,0 +1,39 @@
+\begin{thebibliography}{5}
+\providecommand{\natexlab}[1]{#1}
+\providecommand{\url}[1]{\texttt{#1}}
+\expandafter\ifx\csname urlstyle\endcsname\relax
+  \providecommand{\doi}[1]{doi: #1}\else
+  \providecommand{\doi}{doi: \begingroup \urlstyle{rm}\Url}\fi
+
+\bibitem[Bollinger(1992)]{Bollinger}
+J.~Bollinger.
+\newblock Using bollinger bands.
+\newblock \emph{Stocks \& Commodities}, 10\penalty0 (2):\penalty0 47--51, 1992.
+
+\bibitem[Khetan et~al.(2021)Khetan, Sheth, Dalal, Mistry, Sharma, and
+  Katre]{kucoinAPI}
+I.~Khetan, P.~Sheth, S.~Dalal, S.~Mistry, V.~Sharma, and N.~Katre.
+\newblock Arbitrage in cryptocurrency: A survey.
+\newblock In \emph{2021 5th International Conference on Information Systems and
+  Computer Networks (ISCON)}, pages 1--4. IEEE, 2021.
+
+\bibitem[Theodoridis and Koutroumbas(2006)]{patternRecognition}
+S.~Theodoridis and K.~Koutroumbas.
+\newblock \emph{Pattern recognition}.
+\newblock Elsevier, 2006.
+
+\bibitem[Tian et~al.(2017)Tian, Thung, Sharma, and Lo]{APIbot}
+Y.~Tian, F.~Thung, A.~Sharma, and D.~Lo.
+\newblock Apibot: question answering bot for api documentation.
+\newblock In \emph{2017 32nd IEEE/ACM international conference on automated
+  software engineering (ASE)}, pages 153--158. IEEE, 2017.
+
+\bibitem[W{\k{a}}torek et~al.(2021)W{\k{a}}torek, Dro{\.z}d{\.z}, Kwapie{\'n},
+  Minati, O{\'s}wi{\k{e}}cimka, and Stanuszek]{cryptoMarket}
+M.~W{\k{a}}torek, S.~Dro{\.z}d{\.z}, J.~Kwapie{\'n}, L.~Minati,
+  P.~O{\'s}wi{\k{e}}cimka, and M.~Stanuszek.
+\newblock Multiscale characteristics of the emerging global cryptocurrency
+  market.
+\newblock \emph{Physics Reports}, 901:\penalty0 1--82, 2021.
+
+\end{thebibliography}

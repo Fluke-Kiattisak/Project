@@ -1,0 +1,56 @@
+\documentclass[a4paper, 12pt]{report}
+
+% Preamble ---
+\usepackage[margin=1.5in]{geometry} %To adjust margins
+\usepackage{xcolor} %For text in colors
+\usepackage{ragged2e} 
+
+%\usepackage{arrayjob}
+%\newarray\bibstyles
+%\readarray{bibstyles}{unsrtnat&abbrvnat&dinat&plainnat&rusnat&ksfh_nat}
+
+
+%\usepackage{natbib}
+\usepackage[square,numbers,sort]{natbib}
+%\bibliographystyle{unsrtnat}
+%\bibliographystyle{abbrvnat}
+%\bibliographystyle{plainnat.bst}
+
+\renewcommand\bibname{\centering Reference}
+
+%To declare a document title and an author(s) 
+\title{EGCI491: Assignment II}
+\author{
+	\textbf{Piyachon Rusuwannakul} \\
+	\texttt{piyachon.ruu@student.mahidol.edu}
+	\and
+	\textbf{Ryoichi Kaihatsu} \\
+	\texttt{ryoichi.khr@student.mahidol.edu}
+	\and
+	\textbf{Kiattisak Phisithaporn} \\
+	\texttt{kiattisak.pht@student.mahidol.edu}
+} %Replace your name here
+\date{\today}
+
+\begin{document}
+	\bibliographystyle{plainnat.bst}
+	\maketitle
+		
+	\chapter*{\centering Chapter 2 \\  Literature Review}
+	
+	\hspace{\parindent} 
+	
+	This chapter provides literature reviews for Machine Learning (ML) models, and Application Programming Interfaces (API). In ML, there were various models that can be used but in this senior project, only some will be chosen. In ML, the time series model will be chosen since the project aimed to predicted from price volatile time to time. Another important time series ML model is Facebook Prophet which can provided high accuracy and speed. When it comes to decision making, random forest regression when the price of cryptocurrency is stable and create some patterns. 
+
+	\setcounter{chapter}{2}
+
+	
+	\section{Prediction Modeling using Facbook prophet \cite{9776665}}
+	The Facebook Prophet is used in time series model which we need to provides three functions and one error term. The three functions are The growth function, The Seasonality Function, and The Holiday/Event Function. The growth function models looks at overall trend of data and it includes the changepoints that can altered our data. The Seasonality function is Fourier series in time function. Last function is Holiday function which is the forecasting tools that will affects by to holidays or some major events such as economics event. It provides high accuracy and speed in overall.
+	\section{Prediction Modeling using Random forest  regression and LSTM\cite{jrfm16010051}}
+	The Random forest regression model that have been used in the price analysis is to make decision when the price is stable and do not volatile much. The LSTM is used in time series model but it provides less accuracy than random forest regression. To forecast the price of cryptocurrency, it need to take in an account the relationship of the accuracy and number of explanatory variables. This study uses two methods which are ARMA model of time series and LSTM algorithm of deep learning. The random forest regression is outperformed LSTM in accuracy and the prediction in RMSE and MAPE. 
+	\medskip
+	
+	\bibliography{ReferencesDotBibFile}
+	
+\end{document}

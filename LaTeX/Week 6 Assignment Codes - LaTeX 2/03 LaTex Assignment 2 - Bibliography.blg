@@ -1,0 +1,48 @@
+This is BibTeX, Version 0.99d (TeX Live 2023)
+Capacity: max_strings=200000, hash_size=200000, hash_prime=170003
+The top-level auxiliary file: 03 LaTex Assignment 2 - Bibliography.aux
+The style file: plainnat.bst.bst
+Database file #1: ReferencesDotBibFile.bib
+Warning--empty journal in 9776665
+You've used 2 entries,
+            2773 wiz_defined-function locations,
+            608 strings with 5366 characters,
+and the built_in function-call counts, 1069 in all, are:
+= -- 101
+> -- 49
+< -- 2
++ -- 17
+- -- 15
+* -- 80
+:= -- 165
+add.period$ -- 10
+call.type$ -- 2
+change.case$ -- 11
+chr.to.int$ -- 2
+cite$ -- 5
+duplicate$ -- 51
+empty$ -- 81
+format.name$ -- 17
+if$ -- 228
+int.to.chr$ -- 1
+int.to.str$ -- 1
+missing$ -- 2
+newline$ -- 22
+num.names$ -- 8
+pop$ -- 19
+preamble$ -- 1
+purify$ -- 9
+quote$ -- 0
+skip$ -- 46
+stack$ -- 0
+substring$ -- 40
+swap$ -- 12
+text.length$ -- 1
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 22
+warning$ -- 1
+while$ -- 8
+width$ -- 0
+write$ -- 40
+(There was 1 warning)

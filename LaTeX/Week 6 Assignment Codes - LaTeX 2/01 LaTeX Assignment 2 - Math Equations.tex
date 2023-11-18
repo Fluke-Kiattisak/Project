@@ -1,0 +1,81 @@
+\documentclass[a4paper]{article} %Always requireed
+%========================================================================
+% preamble to declare kackges used in the document
+%========================================================================
+%Packages that will be used
+
+%To use a block comment in a document
+\usepackage{comment} 
+\begin{comment}
+	Test a block comment 
+\end{comment}
+%------------------------------------------------------------------------
+
+\usepackage{fontspec}
+\usepackage{enumitem}
+
+\usepackage{amsmath}
+%\usepackage{titlesec}
+
+%Either Xelatex or Lualatex is required as a default complier
+%To learn more about "fontspec" package: https://ctan.org/pkg/fontspec?lang=en 
+%========================================================================
+%To declare a document title and an author(s) 
+\title{EGCI491 Computer Engineering Seminar\\ \LaTeX Assignment II}
+%\author{Firstname Lastname}
+%\author{Firstname2 Lastname2}
+\author{
+	\textbf{Piyachon Rusuwannakul} \\
+	\texttt{piyachon.ruu@student.mahidol.edu}
+	\and
+	\textbf{Ryoichi Kaihatsu} \\
+	\texttt{ryoichi.khr@student.mahidol.edu}
+	\and
+	\textbf{Kiattisak Phisithaporn} \\
+	\texttt{kiattisak.pht@student.mahidol.edu}
+}
+
+\begin{comment}
+	\author{
+		LastName1, FirstName1\\
+		\texttt{first1.last1@xxxxx.com} 
+		%"\textttt" is used to produce text-mode material in typewriter font within a mathematical expression
+		
+		%To learn more about LaTex command https://www.dickimaw-books.com/latex/novices/html/symbols.html	
+		
+		\and
+		LastName2, FirstName2\\
+		\texttt{first2.last2@xxxxx.com}
+		\and
+		LastName3, FirstName3\\
+		\texttt{first3.last3@xxxxx.com}
+
+	}
+\end{comment}
+%document
+\begin{document}
+	\maketitle
+	\section{\textbf{Quadratic Equation}}
+	%Put your text in a body of your document here... 
+	A quadratic equation is a second degree polynomial written as $ax^2 + bx + c = 0$
+	The generic function of the quadratic equation can be determined as:
+	\begin{center}
+		\begin{equation}
+			f(x) = ax^2 + bx + c
+		\end{equation}
+		\end{center}
+	whose determinant $b^2 - 4ac$ is positive, with x representing an unknown, with a,b, and c representing constants, and with a $\neq$ 0, the quadratic formula is:
+	\begin{center}
+		\begin{align}
+			x = -b \pm \frac{  \sqrt{b^2 - 4ac}}{2a}
+			\end{align}
+		\end{center}
+	where the plus-minus symbol $\pm$ indicates that the quadratic equation has two solutions. When written seperately, they become:
+	\begin{align}
+		\begin{split}
+			x_1 &= -b +  \frac{-b  \sqrt{b^2 - 4ac}}{2a} \hspace*{10pt} and\\
+			x_2 &= -b - \frac{-b  \sqrt{b^2 - 4ac}}{2a}
+			\end{split}
+		\end{align}
+\end{document}
+%========================================================================

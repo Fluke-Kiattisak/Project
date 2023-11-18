@@ -1,0 +1,23 @@
+\begin{thebibliography}{2}
+\providecommand{\natexlab}[1]{#1}
+\providecommand{\url}[1]{\texttt{#1}}
+\expandafter\ifx\csname urlstyle\endcsname\relax
+  \providecommand{\doi}[1]{doi: #1}\else
+  \providecommand{\doi}{doi: \begingroup \urlstyle{rm}\Url}\fi
+
+\bibitem[Chen(2023)]{jrfm16010051}
+Junwei Chen.
+\newblock Analysis of bitcoin price prediction using machine learning.
+\newblock \emph{Journal of Risk and Financial Management}, 16\penalty0 (1),
+  2023.
+\newblock ISSN 1911-8074.
+\newblock \doi{10.3390/jrfm16010051}.
+\newblock URL \url{https://www.mdpi.com/1911-8074/16/1/51}.
+
+\bibitem[N et~al.(2022)N, R, R, and D]{9776665}
+Ramya N, Sanjay~Roshan R, Vishal~Srinivas R, and Krishna~Prasad D.
+\newblock Crypto-currency price prediction using machine learning.
+\newblock pages 1455--1458, 2022.
+\newblock \doi{10.1109/ICOEI53556.2022.9776665}.
+
+\end{thebibliography}
