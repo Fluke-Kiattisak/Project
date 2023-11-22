@@ -1,3 +1,7 @@
+<?php
+session_start();
+?>
+
 <!DOCTYPE html>
 <html>
 
@@ -5,13 +9,11 @@
     <title>Crypto Prediction Website</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
+
 </head>
 
 <body class="bg-light">
-
-    
-
-<div class="content" style="margin-right: 10px">
     <div class="container">
         <div class="text-center my-4">
             <h1>Welcome to CryptoPredictions</h1>
@@ -19,43 +21,72 @@
 
         <nav class="navbar navbar-expand-lg navbar-light bg-white rounded mb-4 p-3 shadow">
             <img src="logo.png" alt="CryptoPredictions Logo" style="width: 100px;">
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
-                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ml-auto">
-                    <li class="nav-item active">
-                        <a class="nav-link" href="Front-end.html">Home</a>
+                    <li class="nav-item">
+                        <a class="nav-link" href="Front-end.php">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="Predictions.php">Predictions</a>
+                        <a class="nav-link" href="Predictions.php"style="color: #000;">Predictions</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="Get-Start.html" style="color: #000;">Current coin value</a>
-                    </li>
-                    
-                    <li class="nav-item">
-                        <a class="nav-link" href="about.html">About</a>
+                        <a class="nav-link" href="Get-Start.php" >Current coin value</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="contact.html">Contact</a>
+                        <a class="nav-link" href="about.php" >About</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="profile.html">User profile</a>
+                        <a class="nav-link" href="contact.php">Contact</a>
                     </li>
+                
                     <li class="nav-item ml-3">
                         <input type="text" placeholder="Search..." class="form-control">
                     </li>
                     <li class="nav-item ml-2">
                         <button class="btn btn-primary">Search</button>
                     </li>
-                    <li class="nav-item ml-2">
-                        <button onclick="openLoginPopup()" class="btn btn-primary" style="background-color: green;">Login</button>
+                    <li>
+                        <?php if (isset($_SESSION['logged_in']) && $_SESSION['logged_in'] == true) : ?>
+                            <ul class="navbar-nav ml-auto">
+                                <li class="nav-item dropdown">
+                                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        Welcome <?php echo $_SESSION['username']; ?>
+                                    </a>
+                                    <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                                        <a class="dropdown-item" href="profile.php">Profile</a>
+                                        <a class="dropdown-item" href="settings.php">Settings</a>
+                                        <div class="dropdown-divider"></div>
+                                        <a class="dropdown-item" href="logout.php">Logout</a>
+                                    </div>
+                                </li>
+                            </ul>
+                        <?php else : ?>
+                            <ul class="navbar-nav ml-auto">
+                                <li class="nav-item">
+                                    <a class="nav-link" href="login.html">Login</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="signup.html">Signup</a>
+                                </li>
+                            </ul>
+                        <?php endif; ?>
 
                     </li>
                 </ul>
             </div>
+
+
+        </nav>
+        <div class="ml-auto">
+
+
+
+        </div>
+
+
         </nav>
 
 <?php
@@ -81,8 +112,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["currency"]) && $_POST[
     // Map the input to table names
     $tables = [
         "ADA" => "ada_usd_future_predictions",
-        "BTC" => "btc_usd_predictions",
+        "BTC" => "btc_usd_future_predictions",
         "ETH" => "eth_usd_future_predictions",
+        "BNB" => "bnb_usd_future_predictions",
         
     ];
 

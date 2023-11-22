@@ -30,16 +30,16 @@ session_start();
                         <a class="nav-link" href="Front-end.php">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="Predictions.php" style="color: #000;">Predictions</a>
+                        <a class="nav-link" href="Predictions.php">Predictions</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="Get-Start.php" >Current coin value</a>
+                        <a class="nav-link" href="Get-Start.html" >Current coin value</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="about.php" >About</a>
+                        <a class="nav-link" href="about.html">About</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="contact.php">Contact</a>
+                        <a class="nav-link" href="contact.html">Contact</a>
                     </li>
                 
                     <li class="nav-item ml-3">
@@ -53,7 +53,7 @@ session_start();
                             <ul class="navbar-nav ml-auto">
                                 <li class="nav-item dropdown">
                                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                        Welcome <?php echo $_SESSION['username']; ?>
+                                        Welcome <?php echo $_SESSION['username'];  ?>
                                     </a>
                                     <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                                         <a class="dropdown-item" href="profile.php">Profile</a>
@@ -88,42 +88,10 @@ session_start();
 
 
         </nav>
-    
-
         <div class="card mb-3 shadow-sm">
-    <div class="card-body">
-        <h2 class="card-title">Coin Prediction</h2>
-        <p class="card-text">Here are the latest predictions:</p>
-        <div class="table-responsive">
-            
-        
-        <form action="Prediction.php" method="post">
-    <select name="currency" id="currencySelect" onchange="submitForm()" style="width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 4px; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); margin-bottom: 20px;">
-        <option value="">Select a currency</option>
-        <option value="ADA">ADA</option>
-        <option value="BTC">BTC</option>
-        <option value="ETH">ETH</option>
-        <option value="BNB">BNB</option>
-        <!-- Add other options here if necessary -->
-    </select>
-</form>
-
-<script>
-function submitForm() {
-    var currencySelect = document.getElementById('currencySelect');
-    if (currencySelect.value !== "") {
-        currencySelect.form.submit();
-    }
-}
-</script>
-
-    </tbody>
-</table>
-</div>
-</div>
-</div>
-                
-                <p class="card-text">Charts</p>
+            <div class="card-body">
+                <h2 class="card-title">Name....</h2>
+                <p class="card-text">Coin available...</p>
             </div>
         </div>
 
@@ -131,33 +99,7 @@ function submitForm() {
             <p>&copy; 2023 CryptoPredictions. All rights reserved.</p>
         </footer>
     </div>
+
 </body>
-
-<script>// Functions for showing/hiding login popup
-    function openLoginPopup() {
-        document.getElementById("loginPopup").style.display = "block";
-        document.getElementById("overlay").style.display = "block";
-    }
-
-    function closeLoginPopup() {
-        document.getElementById("loginPopup").style.display = "none";
-        document.getElementById("overlay").style.display = "none";
-    }
-
-    
-    // Fetch predictions and update the DOM
-    fetch('/api/predictions')
-    .then(response => response.json())
-    .then(data => {
-        const predictionsContainer = document.getElementById('predictionsContainer');
-        data.forEach(prediction => {
-            const predictionElement = document.createElement('div');
-            predictionElement.innerHTML = `Prediction ID: ${prediction.PredictionID}, Predicted Price: ${prediction.PredictedPrice}, Actual Price: ${prediction.ActualPrice}`;
-            predictionsContainer.appendChild(predictionElement);
-        });
-    })
-    .catch(error => console.error('Error:', error));
-</script>
-
 
 </html>
