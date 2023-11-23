@@ -174,8 +174,12 @@ $conn->close();
                     <input type="varchar" class="form-control" name="SECRET_KEY" value="<?php echo htmlspecialchars($userData['SECRET_KEY']); ?>">
                 </div>
                 <div class="form-group">
-                    <label>:PASS_PHRASE: <span class="badge badge-secondary"><?php echo htmlspecialchars($userData['PASS_PHRASE']); ?></span></label>
+                    <label>PASS_PHRASE: <span class="badge badge-secondary"><?php echo htmlspecialchars($userData['PASS_PHRASE']); ?></span></label>
                     <input type="varchar" class="form-control" name="PASS_PHRASE" value="<?php echo htmlspecialchars($userData['PASS_PHRASE']); ?>">
+                </div>
+                <div class="form-group">
+                    <label>IP Address: <span class="badge badge-secondary"><?php echo htmlspecialchars($userData['UserIP']); ?></span></label>
+                    <input type="varchar" class="form-control" name="UserIP" value="<?php echo htmlspecialchars($userData['UserIP']); ?>">
                 </div>
 
                 <!-- Add other fields as necessary -->

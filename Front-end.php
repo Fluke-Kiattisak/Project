@@ -190,19 +190,9 @@ session_start();
     $(document).ready(function() {
         fetchCryptoPrices(); // Fetch prices when page loads
         setInterval(fetchCryptoPrices, 5000); // Refresh every 60 seconds
-    });
-    // Functions for showing/hiding login popup
-    function openLoginPopup() {
-        document.getElementById("loginPopup").style.display = "block";
-        document.getElementById("overlay").style.display = "block";
-    }
+    })
+</script>
 
-    function closeLoginPopup() {
-        document.getElementById("loginPopup").style.display = "none";
-        document.getElementById("overlay").style.display = "none";
-    }
-</script>
-</script>
 </body>
 </div>
 </body>

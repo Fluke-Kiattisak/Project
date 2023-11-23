@@ -20,16 +20,20 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $email = $conn->real_escape_string($_POST['email']); 
     $name = $conn->real_escape_string($_POST['name']);
     $DateOfBirth = $conn->real_escape_string($_POST['DateOfBirth']);
+    $ACCESS_KEY = $conn->real_escape_string($_POST['ACCESS_KEY']); 
+    $SECRET_KEY = $conn->real_escape_string($_POST['SECRET_KEY']);
+    $PASS_PHRASE = $conn->real_escape_string($_POST['PASS_PHRASE']);
+    $UserIP = $conn->real_escape_string($_POST['UserIP']);
 
     // Hash the password
     $hashed_password = password_hash($password, PASSWORD_DEFAULT);
 
     // Insert query
-    $sql = "INSERT INTO user (username, password, email,name,DateofBirth) VALUES (?, ?, ?, ?, ?)";
+    $sql = "INSERT INTO user (username, password, email, name, DateofBirth, ACCESS_KEY, SECRET_KEY, PASS_PHRASE, UserIP) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
     // Prepare and bind
     $stmt = $conn->prepare($sql);
-    $stmt->bind_param("sssss", $username, $hashed_password, $email, $name, $DateOfBirth, $ACCESS_KEY, $SECRET_KEY, $PASS_PHRASE);
+    $stmt->bind_param("sssssssss", $username, $hashed_password, $email, $name, $DateOfBirth, $ACCESS_KEY, $SECRET_KEY, $PASS_PHRASE, $UserIP);
 
     // Execute and check
     if ($stmt->execute()) {

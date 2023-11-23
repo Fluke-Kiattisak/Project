@@ -1,6 +1,106 @@
 <?php
 session_start();
+
+function generateSignature($secret, $timestamp, $method, $endpoint, $body = '') {
+    $strToSign = $timestamp . $method . $endpoint . $body;
+    return base64_encode(hash_hmac('sha256', $strToSign, $secret, true));
+}
+
+$kucoinData = "";
+$servername = "localhost";
+$username = "root";
+$password = "";
+$dbname = "project";
+
+if (isset($_SESSION['logged_in']) && $_SESSION['logged_in'] == true && isset($_SESSION['UserID'])) {
+    $userId = $_SESSION['UserID'];
+
+    $conn = new mysqli($servername, $username, $password, $dbname);
+    if ($conn->connect_error) {
+        die("Connection failed: " . $conn->connect_error);
+    }
+
+    $sql = "SELECT ACCESS_KEY, SECRET_KEY, PASS_PHRASE, UserIP FROM users WHERE UserID = ?";
+    $stmt = $conn->prepare($sql);
+    $stmt->bind_param("i", $userId);
+    $stmt->execute();
+    $result = $stmt->get_result();
+    if ($row = $result->fetch_assoc()) {
+        $accessKey = $row['ACCESS_KEY'];
+        $secretKey = $row['SECRET_KEY'];
+        $passPhrase = $row['PASS_PHRASE'];
+        $userIP = $row['UserIP']; // Assuming UserIP is stored
+
+        // Example API request: Fetching Account Balance
+        $balanceData = makeKucoinApiRequest($accessKey, $secretKey, $passPhrase, "/api/v1/accounts", 'GET', '', $userIP);
+
+        // Format and display data
+        $kucoinData = "<b>Balance:</b> " . json_encode($balanceData);
+    } else {
+        $kucoinData = "API keys not found for the user.";
+    }
+    $conn->close();
+} else {
+    $kucoinData = "User is not logged in or UserID is not set in session.";
+}
+
+function makeKucoinApiRequest($accessKey, $secretKey, $passPhrase, $endpoint, $method = 'GET', $body = '', $userIP = '') {
+    $baseUrl = "https://api.kucoin.com";
+    $timestamp = round(microtime(true) * 1000);
+    $signature = generateSignature($secretKey, $timestamp, $method, $endpoint, $body);
+    $passphrase = base64_encode(hash_hmac('sha256', $passPhrase, $secretKey, true));
+
+    $ch = curl_init();
+    curl_setopt($ch, CURLOPT_URL, $baseUrl . $endpoint);
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+    curl_setopt($ch, CURLOPT_CUSTOMREQUEST, $method);
+    if ($method == 'POST') {
+        curl_setopt($ch, CURLOPT_POSTFIELDS, $body);
+    }
+    $headers = array(
+        "KC-API-KEY: $accessKey",
+        "KC-API-SIGN: $signature",
+        "KC-API-TIMESTAMP: $timestamp",
+        "KC-API-PASSPHRASE: $passphrase",
+        "KC-API-KEY-VERSION: 2"
+    );
+    if (!empty($userIP)) {
+        $headers[] = "X-USER-IP: $userIP"; // Adjust as per KUCOIN's requirement
+    }
+    curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
+
+    $response = curl_exec($ch);
+    if (curl_errno($ch)) {
+        return 'Error:' . curl_error($ch);
+    }
+    curl_close($ch);
+    return json_decode($response, true);
+}
 ?>
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Crypto Prediction Website</title>
+    <!-- Other head elements -->
+</head>
+<body class="bg-light">
+    <div class="container">
+        <!-- Navigation and other content -->
+
+        <!-- KUCOIN Data Display -->
+        <div class="card mb-3 shadow-sm">
+            <div class="card-body">
+                <h2 class="card-title">KUCOIN Data</h2>
+                <p class="card-text"><?php echo htmlspecialchars($kucoinData); ?></p>
+            </div>
+        </div>
+
+        <!-- Footer and other content -->
+    </div>
+</body>
+</html>
+
 
 <!DOCTYPE html>
 <html>
@@ -88,10 +188,10 @@ session_start();
 
 
         </nav>
-        <div class="card mb-3 shadow-sm">
+        <        <div class="card mb-3 shadow-sm">
             <div class="card-body">
-                <h2 class="card-title">Name....</h2>
-                <p class="card-text">Coin available...</p>
+                <h2 class="card-title">KUCOIN Data</h2>
+                <p class="card-text"><?php echo htmlspecialchars($kucoinData); ?></p>
             </div>
         </div>
 
