@@ -104,6 +104,18 @@ session_start();
         <option value="BTC">BTC</option>
         <option value="ETH">ETH</option>
         <option value="BNB">BNB</option>
+        <option value="USDT">USDT</option>
+        <option value="GALA">GALA</option>
+        <option value="MATIC">MATIC</option>
+        <option value="OMG">OMG</option>
+        <option value="FTM">FTM</option>
+        <option value="ECT">ETC</option>
+        <option value="BAND">BAND</option>
+        <option value="SUSHI">SUSHI</option>
+        <option value="NEO">NEO</option>
+        <option value="LTC">LTC</option>
+        <option value="CRO">CRO</option>
+        <option value="SOL">SOL</option>
         <!-- Add other options here if necessary -->
     </select>
 </form>

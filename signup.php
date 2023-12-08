@@ -37,9 +37,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     // Execute and check
     if ($stmt->execute()) {
-        echo "<div class='alert alert-success' role='alert'>
-                Signup successful. <a href='login.html' class='alert-link'>Login here</a>.
-              </div>";
+        echo '<div class="custom-alert success">
+        <span class="alert-message">Signup successful.</span>
+        <a href="login.html" class="alert-link">Login here</a>.
+    </div>';
     } else {
         echo "<div class='alert alert-danger' role='alert'>
                 Error: " . htmlspecialchars($stmt->error) . "
@@ -54,3 +55,43 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     echo "Invalid request method.";
 }
 ?>
+
+<!DOCTYPE html>
+<html>
+<style>
+    .custom-alert {
+        padding: 20px;
+        border-radius: 10px;
+        background-color: #F8ECE9;
+        color: #000000;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        position: fixed; /* Fixed position */
+        top: 50%; /* Center vertically */
+        left: 50%; /* Center horizontally */
+        transform: translate(-50%, -50%); /* Adjust the position */
+        width: 500px; /* Automatic width */
+        max-width: 700px; /* Maximum width */
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+    }
+
+    .alert-message {
+        font-size: 16px;
+        margin-bottom: 10px;
+    }
+
+    .alert-link {
+        color: #000000;
+        text-decoration: underline;
+        font-weight: bold;
+    }
+
+    .alert-link:hover {
+        color: #000000;
+        text-decoration: none;
+    }
+</style>
+

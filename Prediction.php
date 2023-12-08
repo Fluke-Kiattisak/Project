@@ -115,6 +115,18 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["currency"]) && $_POST[
         "BTC" => "btc_usd_future_predictions",
         "ETH" => "eth_usd_future_predictions",
         "BNB" => "bnb_usd_future_predictions",
+        "USTD"=> "ustd_usd_future_predictions",
+        "GALA" => "gala_usd_future_predictions",
+        "MATIC"=> "matic_usd_future_predictions",
+        "OMG" => "omg_usd_future_predictions",
+        "FTM"=> "ftm_usd_future_predictions",
+        "ETC"=> "etc_usd_future_predictions",
+        "BAND"=> "band_usd_future_predictions",
+        "SUSHI"=> "sushi_usd_future_predictions",
+        "NEO"=> "neo_usd_future_predictions",
+        "LTC"=> "ltc_usd_future_predictions",
+        "BUSD"=> "busd_usd_future_predictions",
+
         
     ];
 
